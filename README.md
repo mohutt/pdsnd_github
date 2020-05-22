@@ -5,7 +5,7 @@ This project was created on 2020-05-22.
 
 
 ### Description
-Describe what your project is about and what it does
+This project is about setting up a github for my bikeshare project.
 
 ### Files used
 Include the files used
