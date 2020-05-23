@@ -195,12 +195,15 @@ def display_data(df):
     """displays raw data upon request"""
     response = input('Would you like to examine the raw data? If so, type yes: ')
     if response.lower() == 'yes':
+        #set max_columns to display all columns to user
         pd.set_option('display.max_columns', 500)
+        #set counter to iterate through lines of raw data
         n = 0
         while True:
             print(df[n: n + 5])
             n_response = input('Press Enter to continue viewing raw data. Type no to stop viewing raw data: ')
             n += 5
+            #loop continues till user specifically states no
             if n_response == 'no':
                 break
 
