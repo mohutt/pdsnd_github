@@ -2,9 +2,9 @@ import time
 import pandas as pd
 import numpy as np
 
-CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
-              'washington': 'washington.csv' }
+CITY_DATA = { 'chicago': 'C:\\Users\\Huetten\\udacity-git-course\\udacity-project\\chicago.csv',
+              'new york city': 'C:\\Users\\Huetten\\udacity-git-course\\udacity-project\\new_york_city.csv',
+              'washington': 'C:\\Users\\Huetten\\udacity-git-course\\udacity-project\\washington.csv' }
 
 def get_filters():
     """
@@ -69,7 +69,7 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime
@@ -84,7 +84,7 @@ def load_data(city, month, day):
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-    
+
         # filter by month to create the new dataframe
         df = df.loc[df['month'] == month]
 
@@ -92,7 +92,7 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df.loc[df['day_of_week'] == day.title()]
-    
+
     return df
 
 
@@ -105,19 +105,19 @@ def time_stats(df):
     # display the most common month
     month = df['month'].value_counts().idxmax()
     popular_month = ['January', 'February', 'March', 'April', 'May', 'June'][month - 1]
-    
+
     print('Most common month: ', popular_month)
 
     # display the most common day of week
     day = df['day_of_week'].value_counts().idxmax()
-    
+
     print('Most common day of the week: ', day)
 
 
     # display the most common start hour
     df['Hour'] = pd.DatetimeIndex(df['Start Time']).hour
     popular_hour = df['Hour'].value_counts().idxmax()
-    
+
     print('Most common start hour: ', popular_hour)
 
 
@@ -156,7 +156,7 @@ def trip_duration_stats(df):
 
     # TO DO: display total travel time
     print('Total travel time: ', df['Trip Duration'].sum())
-          
+
     # TO DO: display mean travel time
     print('Mean travel time:  ', df['Trip Duration'].mean())
 
@@ -172,13 +172,13 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
-    print('Counts of user types: \n', 
+    print('Counts of user types: \n',
           'Subscriber: ',df['User Type'].value_counts()[0], '\n',
           'Customer:   ', df['User Type'].value_counts()[1], '\n')
 
     # TO DO: Display counts of gender
     if 'Gender' in df.columns:
-        print('Counts of genders: \n', 
+        print('Counts of genders: \n',
               'Male:   ', df['Gender'].value_counts()[0], '\n',
               'Female: ', df['Gender'].value_counts()[1], '\n')
 
@@ -197,7 +197,7 @@ def display_data(df):
     if response.lower() == 'yes':
         pd.set_option('display.max_columns', 500)
         n = 0
-        while True: 
+        while True:
             print(df[n: n + 5])
             n_response = input('Press Enter to continue viewing raw data. Type no to stop viewing raw data: ')
             n += 5
